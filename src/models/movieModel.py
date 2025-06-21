@@ -6,9 +6,7 @@ class MovieModel():
     @classmethod
     def get_movies(self):
         try:
-            print("iniciando coneccion")
             connection = get_connection()
-            print("coneccion correcta")
             movies=[]
             with connection.cursor() as cursor:
                 cursor.execute('SELECT id,title,duration,released FROM movie ORDER BY title ASC')
@@ -17,7 +15,6 @@ class MovieModel():
                 for row in result:
                     movie=Movie(row[0],row[1],row[2],row[3])
                     movies.append(movie)
-            print("termino coneccion")
             connection.close()
             return movies
 
