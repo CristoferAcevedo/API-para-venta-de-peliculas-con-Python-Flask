@@ -8,7 +8,9 @@ main=Blueprint('route_blueprint', __name__)
 @main.route('/')
 def get_movies():
     try:
+        print("dss")
         movies=MovieModel.get_movies()
+        print("sasa")
         return jsonify(movies)
     except Exception as ex:
         return jsonify({'message': str(ex)}),500

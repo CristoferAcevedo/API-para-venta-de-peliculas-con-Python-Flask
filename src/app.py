@@ -17,4 +17,6 @@ if __name__ =="__main__":
     
     #manejo de errores
     app.register_error_handler(404,page_not_found)
+
+    #ejecuta la app
     app.run()
