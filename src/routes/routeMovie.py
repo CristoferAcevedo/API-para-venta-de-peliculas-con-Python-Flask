@@ -10,6 +10,13 @@ main=Blueprint('route_blueprint', __name__)
 
 @main.route('/')
 def get_movies():
+    """
+    Endpoint para tomar todas las movies
+    ---
+    responses:
+      200:
+        description: Retorna una lista de peliculas
+    """
     try:
         movies=MovieModel.get_movies()
         return jsonify(movies)
@@ -18,6 +25,13 @@ def get_movies():
     
 @main.route('/<id>')
 def get_movie(id):
+    """
+    Endpoint para tomar una movie por id
+    ---
+    responses:
+      200:
+        description: Retorna una movie por id
+    """
     try:
         movie=MovieModel.get_movie(id)
         if movie == None:
@@ -29,6 +43,13 @@ def get_movie(id):
     
 @main.route('/add',methods=['POST'])
 def add_movie():
+    """
+    Endpoint para agregar una movie
+    ---
+    responses:
+      200:
+        description: Retorna la pelicula agregada
+    """
     try:
         id = uuid.uuid4()
         title = request.json['title']
@@ -48,6 +69,13 @@ def add_movie():
     
 @main.route('/delete/<id>',methods=['DELETE'])
 def delete_movie(id):
+    """
+    Endpoint de eliminar una movie
+    ---
+    responses:
+      200:
+        description: Retorna el id de la pelicula eliminada
+    """
     try:
         movie = Movie(id)
 
@@ -63,6 +91,13 @@ def delete_movie(id):
 
 @main.route('/update/<id>',methods=['PUT'])
 def update_movie(id):
+    """
+    Endpoint de actualizar una movie
+    ---
+    responses:
+      200:
+        description: Retorna el id de la pelicula modificada
+    """
     try:
         title = request.json['title']
         duration = int(request.json['duration'])

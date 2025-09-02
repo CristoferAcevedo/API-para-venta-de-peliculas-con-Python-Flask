@@ -2,10 +2,14 @@ from flask import Flask
 from config import config
 from flask_cors import CORS
 
+from flasgger import Swagger
+
 #rutas
 from routes import routeMovie
 
 app=Flask(__name__)
+
+swagger=Swagger(app)
 
 CORS(app,resources={"*":{"origins":"http://localhost:5173"}})
 
